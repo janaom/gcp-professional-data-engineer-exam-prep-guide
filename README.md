@@ -12,7 +12,7 @@
 
 ------------------------------
 
-# Gloud Storage
+# Cloud Storage
 
 You can select from the following location types ([link](https://cloud.google.com/storage/docs/locations)):
 
@@ -87,3 +87,73 @@ For more information, see the Step-by-step guide to designing disaster recovery 
     Object writes that began prior to enabling turbo replication on a bucket replicate across regions at the default replication rate.
         Object composition that uses any source objects written using default replication in the last 12 hours creates a composite object that also uses default replication.
 
+
+# File Formats
+
+## Avro ([link](https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro))
+
+Avro is an open source data format that bundles serialized data with the data's schema in the same file.
+
+When you load Avro data from Cloud Storage, you can load the data into a new table or partition, or you can append to or overwrite an existing table or partition. When your data is loaded into BigQuery, it is converted into columnar format for Capacitor (BigQuery's storage format).
+
+### Advantages of Avro
+
+Avro is the preferred format for loading data into BigQuery. Loading Avro files has the following advantages over CSV and JSON (newline delimited):
+
+    The Avro binary format:
+        Is faster to load. The data can be read in parallel, even if the data blocks are compressed.
+        Doesn't require typing or serialization.
+        Is easier to parse because there are no encoding issues found in other formats such as ASCII.
+    When you load Avro files into BigQuery, the table schema is automatically retrieved from the self-describing source data.
+
+## CSV ([link](https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv))
+
+When you load CSV data from Cloud Storage, you can load the data into a new table or partition, or you can append to or overwrite an existing table or partition. When your data is loaded into BigQuery, it is converted into columnar format for Capacitor (BigQuery's storage format).
+
+### Limitations
+
+You are subject to the following limitations when you load data into BigQuery from a Cloud Storage bucket:
+
+    If your dataset's location is set to a value other than the US multi-region, then the Cloud Storage bucket must be in the same region or contained in the same multi-region as the dataset.
+    BigQuery does not guarantee data consistency for external data sources. Changes to the underlying data while a query is running can result in unexpected behavior.
+    BigQuery does not support Cloud Storage object versioning. If you include a generation number in the Cloud Storage URI, then the load job fails.
+
+When you load CSV files into BigQuery, note the following:
+
+    CSV files don't support nested or repeated data.
+    Remove byte order mark (BOM) characters. They might cause unexpected issues.
+    If you use gzip compression, BigQuery cannot read the data in parallel. Loading compressed CSV data into BigQuery is slower than loading uncompressed data. See Loading compressed and uncompressed data.
+    You cannot include both compressed and uncompressed files in the same load job.
+    The maximum size for a gzip file is 4 GB.
+    Loading CSV data using schema autodetection does not automatically detect headers if all of the columns are string types. In this case, add a numerical column to the input or declare the schema explicitly.
+    When you load CSV or JSON data, values in DATE columns must use the dash (-) separator and the date must be in the following format: YYYY-MM-DD (year-month-day).
+    When you load JSON or CSV data, values in TIMESTAMP columns must use a dash (-) or slash (/) separator for the date portion of the timestamp, and the date must be in one of the following formats: YYYY-MM-DD (year-month-day) or YYYY/MM/DD (year/month/day). The hh:mm:ss (hour-minute-second) portion of the timestamp must use a colon (:) separator.
+    Your files must meet the CSV file size limits described in the load jobs limits.
+
+### Encoding
+
+If you don't specify an encoding, or if you specify UTF-8 encoding when the CSV file is not UTF-8 encoded, BigQuery attempts to convert the data to UTF-8. Generally, if the CSV file is ISO-8859-1 encoded, your data will be loaded successfully, but it may not exactly match what you expect. If the CSV file is UTF-16BE, UTF-16LE, UTF-32BE, or UTF-32LE encoded, the load might fail. To avoid unexpected failures, specify the correct encoding by using the --encoding flag.
+
+# Analytics Hub ([link](https://cloud.google.com/bigquery/docs/analytics-hub-introduction))
+
+Analytics Hub is a data exchange platform that lets you share data and insights at scale across organizational boundaries with a robust security and privacy framework. With Analytics Hub, you can discover and access a data library curated by various data providers. This data library also includes Google-provided datasets.
+
+As an Analytics Hub user, you can perform the following tasks:
+
+    As an Analytics Hub publisher, you can monetize data by sharing it with your partner network or within your own organization in real time. Listings let you share data without replicating the shared data. You can build a catalog of analytics-ready data sources with granular permissions that let you deliver data to the right audiences. You can also manage subscriptions and view the usage metrics for your listings.
+
+### Limitations
+
+Analytics Hub has the following limitations:
+
+    A shared dataset can have a maximum of 1,000 linked datasets.
+
+    A shared topic can have a maximum of 10,000 Pub/Sub subscriptions. This limit includes linked Pub/Sub subscriptions and Pub/Sub subscriptions created outside of Analytics Hub (for example, directly from Pub/Sub).
+
+    A dataset with unsupported resources cannot be selected as a shared dataset when you create a listing. For more information about the BigQuery objects that Analytics Hub supports, see Shared datasets in this document.
+
+    You can't set IAM roles or IAM policies on individual tables within a linked dataset. Apply them at the linked dataset level instead.
+
+    You can't attach IAM tags on tables within a linked dataset. Apply them at the linked dataset level instead.
+
+    Linked datasets created before July 25, 2023 are not backfilled by the subscription resource. Only subscriptions created after July 25, 2023 work with the API methods.
