@@ -24,7 +24,7 @@
 - [Datastream](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#datastream-link)
 - [Data Fusion](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#data-fusion-link)
 - [Dataproc](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataproc-link)
-- [Memorystore for Redis]()
+- [Memorystore for Redis](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#memorystore-for-redis-link)
 
 ------------------------------
 
