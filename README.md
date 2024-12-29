@@ -218,3 +218,177 @@ Spanner supports these transaction modes:
     Locking read-write. These transactions rely on pessimistic locking and, if necessary, two-phase commit. Locking read-write transactions may abort, requiring the application to retry.
 
     Read-only. This transaction type provides guaranteed consistency across several reads, but does not allow writes. By default, read-only transactions execute at a system-chosen timestamp that guarantees external consistency, but they can also be configured to read at a timestamp in the past. Read-only transactions do not need to be committed and do not take locks. In addition, read-only transactions might wait for in-progress writes to complete before executing.
+
+# BigQuery ([link](https://cloud.google.com/bigquery/docs))
+
+BigQuery is Google Cloud's fully managed, petabyte-scale, and cost-effective analytics data warehouse that lets you run analytics over vast amounts of data in near real time. With BigQuery, there's no infrastructure to set up or manage, letting you focus on finding meaningful insights using GoogleSQL and taking advantage of flexible pricing models across on-demand and flat-rate options.
+
+### BigQuery analytics ([link](https://cloud.google.com/bigquery/docs/introduction#bigquery-analytics))
+
+Descriptive and prescriptive analysis uses include business intelligence, ad hoc analysis, geospatial analytics, and machine learning. You can query data stored in BigQuery or run queries on data where it lives using external tables or federated queries including Cloud Storage, Bigtable, Spanner, or Google Sheets stored in Google Drive.
+
+    ANSI-standard SQL queries (SQL:2011 support) including support for joins, nested and repeated fields, analytic and aggregation functions, multi-statement queries, and a variety of spatial functions with geospatial analytics - Geographic Information Systems.
+    Create views to share your analysis.
+    Business intelligence tool support including BI Engine with Looker Studio, Looker, Google Sheets, and 3rd party tools like Tableau and Power BI.
+    BigQuery ML provides machine learning and predictive analytics.
+    BigQuery Studio offers features such as Python notebooks, and version control for both notebooks and saved queries. These features make it easier for you to complete your data analysis and machine learning (ML) workflows in BigQuery.
+    Query data outside of BigQuery with external tables and federated queries.
+
+## Introduction to the BigQuery Storage Write API ([link](https://cloud.google.com/bigquery/docs/write-api))
+
+The BigQuery Storage Write API is a unified data-ingestion API for BigQuery. It combines streaming ingestion and batch loading into a single high-performance API. You can use the Storage Write API to stream records into BigQuery in real time or to batch process an arbitrarily large number of records and commit them in a single atomic operation.
+
+### Advantages of using the Storage Write API
+- Exactly-once delivery semantics.
+- Stream-level transactions.
+- Transactions across streams.
+- Efficient protocol.
+- Schema update detection.
+- Lower cost.
+
+## Introduction to views ([link](https://cloud.google.com/bigquery/docs/views-intro))
+
+A view is a virtual table defined by a SQL query. You can use views to provide an easily reusable name for a complex query or a limited set of data that you can then authorize other users to access. Once you create a view, a user can then query the view as they would a table. Query results contain only the data from the tables and fields specified in the query that defines the view.
+
+The query that defines the view is run each time the view is queried. If you frequently query a large or computationally expensive view, then you should consider creating a materialized view.
+
+BigQuery views are commonly used to:
+
+    Abstract and store calculation and join logic in a common object to simplify query use
+    Provide access to a subset of data and calculation logic without accessing to the base tables
+
+You can also use a view as a data source for a visualization tool such as Looker Studio.
+
+### Comparison to materialized views
+
+Views are virtual and provide a reusable reference to a set of data, but do not physically store any data. Materialized views are defined using SQL, like a regular view, but physically store the data which BigQuery uses to improve performance. For further comparison, see materialized views features.
+
+## Introduction to materialized views ([link](https://cloud.google.com/bigquery/docs/materialized-views-intro))
+
+This document provides an overview of BigQuery support for materialized views. Before you read this document, familiarize yourself with BigQuery and BigQuery's logical views.
+
+In BigQuery, materialized views are precomputed views that periodically cache the results of a query for increased performance and efficiency. BigQuery leverages precomputed results from materialized views and whenever possible reads only changes from the base tables to compute up-to-date results. Materialized views can be queried directly or can be used by the BigQuery optimizer to process queries to the base tables.
+
+Queries that use materialized views are generally faster and consume fewer resources than queries that retrieve the same data only from the base tables. Materialized views can significantly improve the performance of workloads that have the characteristic of common and repeated queries.
+
+### Limitations of materialized views over BigLake tables
+
+    Partitioning of the materialized view is not supported. The base tables can use hive partitioning but the materialized view storage cannot be partitioned in BigLake tables. This means that any deletion in a base table causes a full refresh of the materialized view. For more details see Incremental updates.
+    The -max_staleness option value of the materialized view must be greater than that of the BigLake base table.
+    Joins between BigQuery managed tables and BigLake tables are not supported in a single materialized view definition.
+
+## External tables ([link](https://cloud.google.com/bigquery/docs/tables-intro#external_tables))
+
+External tables are stored outside out of BigQuery storage and refer to data that's stored outside of BigQuery. For more information, see Introduction to external data sources. External tables include the following types:
+
+    BigLake tables, which reference structured data stored in data stores such as Cloud Storage, Amazon Simple Storage Service (Amazon S3), and Azure Blob Storage. These tables let you enforce fine-grained security at the table level.
+
+    For information about how to create BigLake tables, see the following topics:
+        Cloud Storage
+        Amazon S3
+        Blob Storage
+
+    Object tables, which reference unstructured data stored in data stores such as Cloud Storage.
+
+    For information about how to create object tables, see Create object tables.
+
+    Non-BigLake external tables, which reference structured data stored in data stores such as Cloud Storage, Google Drive, and Bigtable. Unlike BigLake tables, these tables don't let you enforce fine-grained security at the table level.
+
+    For information about how to create non-BigLake external tables, see the following topics:
+        Cloud Storage
+        Google Drive
+        Bigtable
+
+
+## Introduction to BigLake external tables ([link](https://cloud.google.com/bigquery/docs/biglake-intro))
+
+This document provides an overview of BigLake and assumes familiarity with database tables and Identity and Access Management (IAM). To query data stored in the supported data stores, you must first create BigLake tables and then query them using GoogleSQL syntax:
+
+    Create Cloud Storage BigLake tables and then query.
+    Create Amazon S3 BigLake tables and then query.
+    Create Azure Blob Storage BigLake tables and then query.
+
+You can also upgrade an external table to BigLake. For more information, see Upgrade an external table to BigLake.
+
+BigLake tables let you query structured data in external data stores with access delegation. Access delegation decouples access to the BigLake table from access to the underlying data store. An external connection associated with a service account is used to connect to the data store. Because the service account handles retrieving data from the data store, you only have to grant users access to the BigLake table. This lets you enforce fine-grained security at the table level, including row-level and column-level security. For BigLake tables based on Cloud Storage, you can also use dynamic data masking. To learn more about multi-cloud analytic solutions using BigLake tables with Amazon S3 or Blob Storage data, see BigQuery Omni.
+
+BigLake tables support the following formats:
+
+    Avro
+    CSV
+    Delta Lake
+    Iceberg
+    JSON
+    ORC
+    Parquet
+
+## Introduction to partitioned tables ([link](https://cloud.google.com/bigquery/docs/partitioned-tables))
+
+A partitioned table is divided into segments, called partitions, that make it easier to manage and query your data. By dividing a large table into smaller partitions, you can improve query performance and control costs by reducing the number of bytes read by a query. You partition tables by specifying a partition column which is used to segment the table.
+
+If a query uses a qualifying filter on the value of the partitioning column, BigQuery can scan the partitions that match the filter and skip the remaining partitions. This process is called pruning.
+
+In a partitioned table, data is stored in physical blocks, each of which holds one partition of data. Each partitioned table maintains various metadata about the sort properties across all operations that modify it. The metadata lets BigQuery more accurately estimate a query cost before the query is run.
+
+### When to use partitioning
+
+Consider partitioning a table in the following scenarios:
+
+    You want to improve the query performance by only scanning a portion of a table.
+    Your table operation exceeds a standard table quota and you can scope the table operations to specific partition column values allowing higher partitioned table quotas.
+    You want to determine query costs before a query runs. BigQuery provides query cost estimates before the query is run on a partitioned table. Calculate a query cost estimate by pruning a partitioned table, then issuing a query dry run to estimate query costs.
+    You want any of the following partition-level management features:
+        Set a partition expiration time to automatically delete entire partitions after a specified period of time.
+        Write data to a specific partition using load jobs without affecting other partitions in the table.
+        Delete specific partitions without scanning the entire table.
+
+Consider clustering a table instead of partitioning a table in the following circumstances:
+
+    You need more granularity than partitioning allows.
+    Your queries commonly use filters or aggregation against multiple columns.
+    The cardinality of the number of values in a column or group of columns is large.
+    You don't need strict cost estimates before query execution.
+    Partitioning results in a small amount of data per partition (approximately less than 10 GB). Creating many small partitions increases the table's metadata, and can affect metadata access times when querying the table.
+    Partitioning results in a large number of partitions, exceeding the limits on partitioned tables.
+    Your DML operations frequently modify (for example, every few minutes) most partitions in the table.
+
+In such cases, table clustering lets you accelerate queries by clustering data in specific columns based on user-defined sort properties.
+
+You can also combine clustering and table partitioning to achieve finer-grained sorting. For more information about this approach, see Combining clustered and partitioning tables.
+
+### Types of partitioning
+
+- Integer range partitioning
+- Time-unit column partitioning
+- Ingestion time partitioning
+- Select daily, hourly, monthly, or yearly partitioning
+
+
+## Introduction to clustered tables ([link](https://cloud.google.com/bigquery/docs/clustered-tables))
+
+Clustered tables in BigQuery are tables that have a user-defined column sort order using clustered columns. Clustered tables can improve query performance and reduce query costs.
+
+In BigQuery, a clustered column is a user-defined table property that sorts storage blocks based on the values in the clustered columns. The storage blocks are adaptively sized based on the size of the table. Colocation occurs at the level of the storage blocks, and not at the level of individual rows; for more information on colocation in this context, see Clustering.
+
+A clustered table maintains the sort properties in the context of each operation that modifies it. Queries that filter or aggregate by the clustered columns only scan the relevant blocks based on the clustered columns, instead of the entire table or table partition. As a result, BigQuery might not be able to accurately estimate the bytes to be processed by the query or the query costs, but it attempts to reduce the total bytes at execution.
+
+### When to use clustering
+
+Clustering addresses how a table is stored so it's generally a good first option for improving query performance. You should therefore always consider clustering given the following advantages it provides:
+
+    Unpartitioned tables larger than 64 MB are likely to benefit from clustering. Similarly, table partitions larger than 64 MB are also likely to benefit from clustering. Clustering smaller tables or partitions is possible, but the performance improvement is usually negligible.
+    If your queries commonly filter on particular columns, clustering accelerates queries because the query only scans the blocks that match the filter.
+    If your queries filter on columns that have many distinct values (high cardinality), clustering accelerates these queries by providing BigQuery with detailed metadata for where to get input data.
+    Clustering enables your table's underlying storage blocks to be adaptively sized based on the size of the table.
+
+You might consider partitioning your table in addition to clustering. In this approach, you first segment data into partitions, and then you cluster the data within each partition by the clustering columns. Consider this approach in the following circumstances:
+
+    You need a strict query cost estimate before you run a query. The cost of queries over clustered tables can only be determined after the query is run. Partitioning provides granular query cost estimates before you run a query.
+    Partitioning your table results in an average partition size of at least 10 GB per partition. Creating many small partitions increases the table's metadata, and can affect metadata access times when querying the table.
+    You need to continually update your table but still want to take advantage of long-term storage pricing. Partitioning enables each partition to be considered separately for eligibility for long term pricing. If your table is not partitioned, then your entire table must not be edited for 90 consecutive days to be considered for long term pricing.
+
+For more information, see Combine clustered and partitioned tables.
+
+
+
+
