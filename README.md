@@ -703,3 +703,14 @@ An example of the pipeline ([link](https://cloud.google.com/data-fusion/docs/tut
 
 <img width="1036" alt="complete-pipeline-studio" src="https://github.com/user-attachments/assets/e955d1c7-af31-4d0e-b8d2-912adf538f88" />
 
+# Dataproc ([link](https://cloud.google.com/dataproc/docs/concepts/overview))
+
+Dataproc is a managed Spark and Hadoop service that lets you take advantage of open source data tools for batch processing, querying, streaming, and machine learning. Dataproc automation helps you create clusters quickly, manage them easily, and save money by turning clusters off when you don't need them. With less time and money spent on administration, you can focus on your jobs and your data.
+
+## Dataproc Workflow Templates ([link](https://cloud.google.com/dataproc/docs/concepts/workflows/workflow-schedule-solutions#dataproc_workflow_templates))
+
+Dataproc Workflow templates provide a flexible and easy-to-use mechanism for managing and executing workflows. A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
+
+## Graceful Decommissioning ([link](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-clusters#graceful_decommissioning))
+
+When you downscale a cluster, work in progress may stop before completion. If you are using Dataproc v 1.2 or later, you can use Graceful Decommissioning, which incorporates Graceful Decommission of YARN Nodes to finish work in progress on a worker before it is removed from the Cloud Dataproc cluster.
