@@ -498,3 +498,60 @@ Although you can catch exceptions within the DoFn.ProcessElement method, log the
 Instead, use a pattern called a dead-letter queue (unprocessed messages queue). Catch exceptions in the DoFn.ProcessElement method and log errors. Instead of dropping the failed element, use branching outputs to write failed elements into a separate PCollection object. These elements are then written to a data sink for later inspection and handling with a separate transform.
 
 Use Cloud Monitoring to apply different monitoring and alerting policies for your pipeline's dead-letter queue. For example, you can visualize the number and size of elements processed by your dead-letter transform and configure alerting to trigger if certain threshold conditions are met.
+
+# Dataplex ([link](https://cloud.google.com/dataplex/docs/introduction))
+
+Dataplex is a data fabric that unifies distributed data and automates data management and governance for that data.
+
+Dataplex lets you do the following:
+
+    Build a domain-specific data mesh across data that's stored in multiple Google Cloud projects, without any data movement.
+    Consistently govern and monitor data with a single set of permissions.
+    Discover and curate metadata across various silos using catalog capabilities. For more information, see Dataplex Catalog overview.
+    Securely query metadata by using BigQuery and open source tools, such as Spark SQL, Presto, and HiveQL.
+    Run data quality and data lifecycle management tasks, including serverless Spark tasks.
+    (Deprecated) Explore data using fully managed, serverless Spark environments with access to notebooks and Spark SQL queries.
+
+### Why use Dataplex?
+
+Enterprises have data that's distributed across data lakes, data warehouses, and data marts. Using Dataplex, you can do the following:
+
+    Discover data
+    Curate data
+    Unify data without any data movement
+    Organize data based on your business needs
+    Centrally manage, monitor, and govern data
+
+Dataplex lets you standardize and unify metadata, security policies, governance, classification, and data lifecycle management across this distributed data.
+
+### How Dataplex works
+
+Dataplex manages data in a way that doesn't require data movement or duplication. As you identify new data sources, Dataplex harvests the metadata for both structured and unstructured data, using built-in data quality checks to enhance integrity.
+
+Dataplex automatically registers all metadata in a unified metastore. You can access data and metadata using various services and tools including the following:
+
+    Google Cloud services, such as BigQuery, Dataproc Metastore, Data Catalog.
+    Open source tools, such as Apache Spark and Presto.
+
+### Terminology
+
+Dataplex abstracts away the underlying data storage systems, by using the following constructs:
+
+    Lake: A logical construct representing a data domain or business unit. For example, to organize data based on group usage, you can set up a lake for each department (for example, retail, sales, finance).
+
+    Zone: A subdomain within a lake, which is useful to categorize data by the following:
+        Stage: for example, landing, raw, curated data analytics, and curated data science
+        Usage: for example, data contract
+        Restrictions: for example, security controls and user access levels
+
+    Zones are of two types:
+
+        Raw zone: contains data that is in its raw format and not subject to strict type-checking.
+
+        Curated zone: contains data that is cleaned, formatted, and ready for analytics. The data is columnar, Hive-partitioned, and stored in Parquet, Avro, Orc files, or BigQuery tables. Data undergoes type-checking- for example, to prohibit the use of CSV files because they don't perform as well for SQL access.
+
+    Asset: maps to data stored in either Cloud Storage or BigQuery. You can map data stored in separate Google Cloud projects as assets into a single zone.
+
+    Entity: represents metadata for structured and semi-structured data (for example, table), and unstructured data (for example, fileset).
+
+
