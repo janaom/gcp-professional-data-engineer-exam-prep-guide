@@ -10,6 +10,21 @@
 
 ❗ This RP contains my personal notes that helped me to prepare for the PDE exam.
 
+- [Cloud Storage](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#cloud-storage)
+- [File Formats](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#file-formats)
+- [Analytics Hub](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#analytics-hub-link)
+- [Bigtable](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#bigtable-link)
+- [Spanner](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#spanner-link)
+- [BigQuery](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#bigquery-link)
+- [Dataflow](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataflow-link)
+- [Dataplex](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataplex-link)
+- [Data Catalog](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#data-catalog-link)
+- [Pub/Sub](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#pubsub-link)
+- [Dataform](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataform-link)
+- [Datastream](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#datastream-link)
+- [Data Fusion](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#data-fusion-link)
+- [Dataproc](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataproc-link) 
+
 ------------------------------
 
 # Cloud Storage
