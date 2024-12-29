@@ -157,3 +157,64 @@ Analytics Hub has the following limitations:
     You can't attach IAM tags on tables within a linked dataset. Apply them at the linked dataset level instead.
 
     Linked datasets created before July 25, 2023 are not backfilled by the subscription resource. Only subscriptions created after July 25, 2023 work with the API methods.
+
+# Bigtable ([link](https://cloud.google.com/bigtable/docs))
+
+Bigtable is a low-latency NoSQL database service for machine learning, operational analytics, and user-facing operations. It's a wide-column, key-value store that can scale to billions of rows and thousands of columns. With Bigtable, you can replicate your data to regions across the world for high availability and data resiliency.
+
+### What it's good for ([link](https://cloud.google.com/bigtable/docs/overview))
+
+Bigtable is ideal for applications that need high throughput and scalability for key-value data, where each value is typically no larger than 10 MB. Bigtable also excels as a storage engine for batch MapReduce operations, stream processing/analytics, and machine-learning applications.
+
+You can use Bigtable to store and query all of the following types of data:
+
+    Time-series data, such as CPU and memory usage over time for multiple servers.
+    Marketing data, such as purchase histories and customer preferences.
+    Financial data, such as transaction histories, stock prices, and currency exchange rates.
+    Internet of Things data, such as usage reports from energy meters and home appliances.
+    Graph data, such as information about how users are connected to one another.
+
+### Bigtable storage model
+
+Bigtable stores data in massively scalable tables, each of which is a sorted key-value map. The table is composed of rows, each of which typically describes a single entity, and columns, which contain individual values for each row. Each row is indexed by a single row key, and columns that are related to one another are typically grouped into a column family. Each column is identified by a combination of the column family and a column qualifier, which is a unique name within the column family.
+
+![image](https://github.com/user-attachments/assets/6289f025-dac6-4ab1-95a7-5f60972f6bf9)
+
+### Causes of slower performance ([link](https://cloud.google.com/bigtable/docs/performance#slower-perf))
+
+- You read a large number of non-contiguous row keys or row ranges in a single read request.
+- Your table's schema is not designed correctly.
+- The rows in your Bigtable table contain large amounts of data.
+- The rows in your Bigtable table contain a very large number of cells.
+- The cluster doesn't have enough nodes.
+- The Bigtable cluster was scaled up or scaled down recently.
+- The Bigtable cluster uses HDD disks.
+- There are issues with the network connection.
+- You are using replication but your application is using an out-of-date client library.
+- You enabled replication but didn't add more nodes to your clusters.
+
+### Troubleshoot performance issues ([link](https://cloud.google.com/bigtable/docs/performance#troubleshooting))
+
+- Look at the Key Visualizer scans for your table.
+- Try commenting out the code that performs Bigtable reads and writes.
+- Ensure that you're creating as few clients as possible.
+- Make sure you're reading and writing many different rows in your table.
+- Verify that you see approximately the same performance for reads and writes.
+- Use the right type of write requests for your data.
+- Check the latency for a single row.
+- Use a separate app profile for each workload.
+- Enable client-side metrics.
+
+# Spanner ([link](https://cloud.google.com/spanner/docs))
+
+Spanner is a fully managed, mission-critical database service that brings together relational, graph, key-value, and search. It offers transactional consistency at global scale, automatic, synchronous replication for high availability, and support for two SQL dialects: GoogleSQL (ANSI 2011 with extensions) and PostgreSQL. 
+
+### Transactions overview ([link](https://cloud.google.com/spanner/docs/transactions))
+
+A transaction in Spanner is a set of reads and writes that execute atomically at a single logical point in time across columns, rows, and tables in a database.
+
+Spanner supports these transaction modes:
+
+    Locking read-write. These transactions rely on pessimistic locking and, if necessary, two-phase commit. Locking read-write transactions may abort, requiring the application to retry.
+
+    Read-only. This transaction type provides guaranteed consistency across several reads, but does not allow writes. By default, read-only transactions execute at a system-chosen timestamp that guarantees external consistency, but they can also be configured to read at a timestamp in the past. Read-only transactions do not need to be committed and do not take locks. In addition, read-only transactions might wait for in-progress writes to complete before executing.
