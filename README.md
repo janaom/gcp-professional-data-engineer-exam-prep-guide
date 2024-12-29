@@ -554,4 +554,85 @@ Dataplex abstracts away the underlying data storage systems, by using the follow
 
     Entity: represents metadata for structured and semi-structured data (for example, table), and unstructured data (for example, fileset).
 
+# Data Catalog ([link](https://cloud.google.com/data-catalog/docs/concepts/overview))
+
+Dataplex's Data Catalog feature is a central inventory of an organization's data assets. Data Catalog automatically catalogs metadata from Google Cloud sources such as BigQuery, Vertex AI, Pub/Sub, Spanner, Bigtable, and more. Data Catalog also indexes table and fileset metadata from Cloud Storage through discovery.
+
+You can discover data with Dataplex's governed organization-wide metadata search capability. You can further enrich metadata with critical business context, and enable lineage tracking, data profiling, data quality checks, and access control capabilities.
+
+Using Data Catalog, organizations can achieve better data discovery, metadata management, and governance.
+
+### Why do you need Data Catalog?
+
+Most organizations deal with a large and growing number of data assets. Data stakeholders (consumers, producers, and administrators) within an organization face multiple challenges, including the following:
+
+    Searching for insightful data:
+        Data consumers don't know the location and origin of data. They have to navigate data "swamps".
+        Data consumers don't know what data to use to get insights because most data isn't well documented and, even if documented, isn't well maintained.
+        Data can't be found and is often lost when it resides only in people's minds.
+
+    Understanding data:
+        Is the data fresh, clean, validated, approved for use in production?
+        Which dataset out of several duplicate sets is relevant and up-to-date?
+        How does one dataset relate to another?
+        Who is using the data and who is the owner?
+        Who and what processes are transforming the data?
+
+    Making data useful:
+
+        Data producers don't have an efficient way to put forward their data for consumers. If there's no self-service, consumers may overwhelm producers. Several data engineers can't manually provide data to thousands of data analysts.
+
+        Valuable time is lost if data consumers have to find out how to request data access, wait without a defined response time, escalate, and wait again.
+
+Without the right tools, the challenges become a major obstacle to the efficient use of data. Data Catalog provides a centralized repository that lets organizations achieve the following:
+
+    Gain a unified view to reduce the pain of searching for the right data.
+    Support data-driven decision making and accelerate the insight time by enriching data with technical and business metadata.
+    Improve data management to increase operational efficiency and productivity.
+    Take ownership over the data to improve trust and confidence in it.
+
+### How Data Catalog works
+
+Data Catalog can catalog asset metadata from different Google Cloud systems.
+
+You can also use Data Catalog APIs to integrate with custom data sources.
+
+After your data is cataloged, you can add your own metadata to these assets using tags.
+
+![dc-gcp-overview](https://github.com/user-attachments/assets/1913a2e8-1b22-4534-978a-0e1bcbd5709a)
+
+### Automatic cataloging of assets
+
+For a given project, Data Catalog automatically catalogs the following Google Cloud assets:
+
+    Analytics Hub linked datasets
+    BigQuery datasets, tables, models, routines, and connections
+    Bigtable instances, clusters, and tables (including column family details)
+    Dataplex lakes, zones, tables, and filesets
+    Dataproc Metastore services, databases, and tables
+    Pub/Sub topics
+    Spanner instances, databases, tables, and views
+    Vertex AI models, datasets, and Vertex AI Feature Store resources
+
+In addition to cataloging assets within the project IDs for which you have metadata access, Data Catalog can catalog data stored in the BigQuery projects that contain public datasets.
+
+### Catalog non-Google Cloud assets
+
+To catalog metadata from non-Google Cloud systems in your organization, you can use the following:
+
+    Community-contributed connectors to multiple popular on-premises data sources
+    Manually build on the Data Catalog APIs for custom entries
+
+### Access Data Catalog
+
+You can access Data Catalog functionalities using:
+
+    Dataplex in the Google Cloud console
+
+    gcloud command-line interface (CLI)
+
+    Data Catalog APIs
+
+    Cloud Client Libraries
+
 
