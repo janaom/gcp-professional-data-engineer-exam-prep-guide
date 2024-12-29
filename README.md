@@ -635,4 +635,26 @@ You can access Data Catalog functionalities using:
 
     Cloud Client Libraries
 
+# Pub/Sub ([link](https://cloud.google.com/pubsub/docs/overview))
 
+Pub/Sub is an asynchronous and scalable messaging service that decouples services producing messages from services processing those messages.
+
+Pub/Sub allows services to communicate asynchronously, with latencies typically on the order of 100 milliseconds.
+
+Pub/Sub is used for streaming analytics and data integration pipelines to load and distribute data. It's equally effective as a messaging-oriented middleware for service integration or as a queue to parallelize tasks.
+
+Pub/Sub lets you create systems of event producers and consumers, called publishers and subscribers. Publishers communicate with subscribers asynchronously by broadcasting events, rather than by synchronous remote procedure calls (RPCs).
+
+Publishers send events to the Pub/Sub service, without regard to how or when these events are to be processed. Pub/Sub then delivers events to all the services that react to them. In systems communicating through RPCs, publishers must wait for subscribers to receive the data. However, the asynchronous integration in Pub/Sub increases the flexibility and robustness of the overall system.
+
+## Pull subscriptions ([link](https://cloud.google.com/pubsub/docs/pull))
+
+In a pull subscription, a subscriber client requests messages from the Pub/Sub server.
+
+The pull mode can use one of the two service APIs, Pull or StreamingPull. To run the chosen API, you can select a Google-provided high-level client library, or a low-level auto-generated client library. You can also choose between asynchronous and synchronous message processing.
+
+## Push subscriptions ([link](https://cloud.google.com/pubsub/docs/push))
+
+In push delivery, Pub/Sub initiates requests to your subscriber application to deliver messages. Messages are delivered to a publicly addressable server or a webhook, such as an HTTPS POST request.
+
+Push subscriptions minimize dependencies on Pub/Sub-specific client libraries and authentication mechanisms. They also work well with serverless and autoscaling service technologies, such as Cloud Run functions, Cloud Run, and Google Kubernetes Engine.
