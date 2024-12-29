@@ -23,7 +23,8 @@
 - [Dataform](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataform-link)
 - [Datastream](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#datastream-link)
 - [Data Fusion](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#data-fusion-link)
-- [Dataproc](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataproc-link) 
+- [Dataproc](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataproc-link)
+- [Memorystore for Redis]()
 
 ------------------------------
 
@@ -739,3 +740,30 @@ Dataproc Workflow templates provide a flexible and easy-to-use mechanism for man
 ### Graceful Decommissioning ([link](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-clusters#graceful_decommissioning))
 
 When you downscale a cluster, work in progress may stop before completion. If you are using Dataproc v 1.2 or later, you can use Graceful Decommissioning, which incorporates Graceful Decommission of YARN Nodes to finish work in progress on a worker before it is removed from the Cloud Dataproc cluster.
+
+# Memorystore for Redis ([link](https://cloud.google.com/memorystore/docs/redis/memorystore-for-redis-overview))
+
+Memorystore for Redis provides a fully-managed service that is powered by the Redis in-memory data store to build application caches that provide sub-millisecond data access.
+
+Memorystore for Redis offers several advantages over self-managed Redis:
+
+    Deploy what fits your needs. Memorystore for Redis allows you the flexibility to choose from different service tiers and sizes that fit your performance and operational needs. With a few clicks, you have the option to deploy a Basic Tier standalone Redis instance or a Standard Tier high availability Redis instance up to 300 GB.
+    
+    Easily scale to get blazing speed. With Memorystore for Redis, you can easily achieve your latency and throughput targets by scaling up your Redis instances with minimal impact to your application's availability. Start with the lowest tier and smallest size, then grow your Redis instance as the needs of your application change. For applications that need scaling of read queries, you can scale the queries across five read replicas using the read endpoint.
+
+    Highly available and more secure. Redis instances are protected from the internet using private IPs and are further secured using Identity and Access Management role-based access control and in-transit encryption. Standard high availability instances provide up to five replicas replicated across zones and provide a 99.9% availability SLA.
+    
+    Focus on your application. Memorystore for Redis automates the complex operational tasks that are required to deploy and manage Redis. Tasks like provisioning, replication, failover, and monitoring are all automated. Applications connect to a single endpoint, which simplifies management and operations. Additionally, integration with Cloud Monitoring makes it easy to monitor your Redis instances.
+
+    Redis Protocol Compatible. Memorystore for Redis is fully Redis protocol compliant. You can move your applications using open source Redis to use Memorystore for Redis without any code changes. There is no need to learn new tools: all existing tools and client libraries just work.
+
+### What it's good for
+
+Memorystore for Redis provides a fast, in-memory store for use cases that require fast, real-time processing of data. From simple caching use cases to real time analytics, Memorystore for Redis provides the performance you need.
+
+    Caching: Cache is an integral part of modern application architectures. Memorystore for Redis provides low latency access and high throughput for heavily accessed data, compared to accessing the data from a disk based backend store. Session management, frequently accessed queries, scripts, and pages are common examples of caching.
+
+    Gaming: Gaming is about capturing and keeping the user's attention. One key aspect that keeps users hooked on a game is the leaderboard. Everyone wants to see how they are progressing and where they stand. Making this experience snappy is critical, and with its in-memory store and data structure like Sorted Set, Memorystore for Redis makes it easy to maintain a sorted list of scores while providing uniqueness of elements. Player Profile is another piece of information that can be accessed frequently. Redis hash makes it fast and easy to store and access profile data.
+
+    Stream Processing: Whether processing a Twitter feed or stream of data from IoT devices, Memorystore for Redis is a perfect fit for streaming solutions. Combined with Dataflow, Memorystore for Redis provides a scalable, fast in-memory store for storing intermediate data that thousands of clients can access with very low latency.
+
