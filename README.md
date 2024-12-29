@@ -658,3 +658,48 @@ The pull mode can use one of the two service APIs, Pull or StreamingPull. To run
 In push delivery, Pub/Sub initiates requests to your subscriber application to deliver messages. Messages are delivered to a publicly addressable server or a webhook, such as an HTTPS POST request.
 
 Push subscriptions minimize dependencies on Pub/Sub-specific client libraries and authentication mechanisms. They also work well with serverless and autoscaling service technologies, such as Cloud Run functions, Cloud Run, and Google Kubernetes Engine.
+
+# Dataform ([link](https://cloud.google.com/dataform/docs/overview))
+
+Dataform is a service for data analysts to develop, test, version control, and schedule complex SQL workflows for data transformation in BigQuery.
+
+Dataform lets you manage data transformation in the Extraction, Loading, and Transformation (ELT) process for data integration. After raw data is extracted from source systems and loaded into BigQuery, Dataform helps you to transform it into a well-defined, tested, and documented suite of data tables.
+
+Dataform lets you perform the following data transformation actions:
+
+    Develop and execute SQL workflows for data transformation.
+    Collaborate with team members on SQL workflow development through Git.
+    Manage a large number of tables and their dependencies.
+    Declare source data and manage table dependencies.
+    View a visualization of the dependency tree of your SQL workflow.
+    Manage data with SQL code in a central repository.
+    Reuse code with JavaScript.
+    Test data correctness with quality tests on source and output tables.
+    Version control SQL code.
+    Document data tables inside SQL code.
+
+# Datastream ([link](https://cloud.google.com/datastream/docs/overview))
+
+Datastream is a serverless and easy-to-use change data capture (CDC) and replication service that lets you synchronize data reliably, and with minimal latency.
+
+Datastream provides seamless replication of data from operational databases into BigQuery. In addition, Datastream supports writing the change event stream into Cloud Storage, and offers streamlined integration with Dataflow templates to build custom workflows for loading data into a wide range of destinations, such as Cloud SQL and Spanner. You can also use Datastream to leverage the event stream directly from Cloud Storage to realize event-driven architectures. Datastream supports Oracle, MySQL, SQL Server, and PostgreSQL (including AlloyDB for PostgreSQL) sources.
+
+Benefits of Datastream include:
+
+    Seamless setup of ELT (Extract, Load, Transform) pipelines for low-latency data replication to enable near real-time insights in BigQuery.
+    Being serverless so there are no resources to provision or manage, and the service scales up and down automatically, as needed, with minimal downtime.
+    Easy-to-use setup and monitoring experiences that achieve super-fast time-to-value.
+    Integration across the best of Google Cloud data services' portfolio for data integration across Datastream, Dataflow, Pub/Sub, BigQuery, and more.
+    Synchronizing and unifying data streams across heterogeneous databases and applications.
+    Security, with private connectivity options and the security you expect from Google Cloud.
+    Being accurate and reliable, with transparent status reporting and robust processing flexibility in the face of data and schema changes.
+    Supporting multiple use cases, including analytics, database replication, and synchronization for migrations and hybrid-cloud configurations, and for building event-driven architectures.
+
+# Data Fusion ([link](https://cloud.google.com/data-fusion/docs/concepts/overview))
+
+Cloud Data Fusion is a fully managed, cloud-native, enterprise data integration service for quickly building and managing data pipelines. The Cloud Data Fusion web interface lets you build scalable data integration solutions. It lets you connect to various data sources, transform the data, and then transfer it to various destination systems, without having to manage the infrastructure.
+
+An example of the pipeline ([link](https://cloud.google.com/data-fusion/docs/tutorials/targeting-campaign-pipeline))
+
+<img width="1036" alt="complete-pipeline-studio" src="https://github.com/user-attachments/assets/e955d1c7-af31-4d0e-b8d2-912adf538f88" />
+
