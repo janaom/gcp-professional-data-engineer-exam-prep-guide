@@ -767,3 +767,30 @@ Memorystore for Redis provides a fast, in-memory store for use cases that requir
 
     Stream Processing: Whether processing a Twitter feed or stream of data from IoT devices, Memorystore for Redis is a perfect fit for streaming solutions. Combined with Dataflow, Memorystore for Redis provides a scalable, fast in-memory store for storing intermediate data that thousands of clients can access with very low latency.
 
+### What is a manual failover? ([link](https://cloud.google.com/memorystore/docs/redis/about-manual-failover))
+
+A standard tier Memorystore for Redis instance uses a replica node to back up the primary node. A normal failover occurs when the primary node becomes unhealthy, causing the replica to be designated as the new primary. A manual failover differs from a normal failover because you initiate it yourself. For more information on how Memorystore for Redis replication works, see High availability.
+
+### Why initiate a manual failover?
+
+Initiating a manual failover allows you to test how your application responds to a failover. This knowledge can ensure a smoother failover process if an unexpected failover occurs later on.
+
+### Optional data protection mode
+
+The two available data protection modes are:
+
+    limited-data-loss mode (default).
+    force-data-loss mode.
+
+### How data protection modes work
+
+The limited-data-loss mode minimizes data loss by verifying that the difference in data between the primary and replica is below 30 MB before initiating the failover. The offset on the primary is incremented for each byte of data that must be synchronized to its replicas. In the limited-data-loss mode, the failover will abort if the greatest offset delta between the primary and each replica is 30MB or greater. If you can tolerate more data loss and want to aggressively execute the failover, try setting the data protection mode to force-data-loss.
+
+The force-data-loss mode employs a chain of failover strategies to aggressively execute the failover. It does not check the offset delta between the primary and replicas before initiating the failover; you can potentially lose more than 30MB of data changes.
+
+### When to run a manual failover
+
+Manual failovers using the default limited-data-loss protection mode only succeed if the bytes pending replication metric is less than 30MB. If you want to run a manual failover with bytes pending replication higher than 30MB, use the force-data-loss protection mode.
+
+If you are trying to preserve as much data as possible, temporarily stop your application from writing to the Redis instance, and wait to run your manual failover until the bytes pending replication metric is as low as you deem acceptable.
+
