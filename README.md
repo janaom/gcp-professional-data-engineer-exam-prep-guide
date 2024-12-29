@@ -389,6 +389,16 @@ You might consider partitioning your table in addition to clustering. In this ap
 
 For more information, see Combine clustered and partitioned tables.
 
+## Understand slots ([link](https://cloud.google.com/bigquery/docs/slots?hl=en))
+
+A BigQuery slot is a virtual CPU used by BigQuery to execute SQL queries. During the query execution, BigQuery automatically calculates how many slots a query requires, depending on the query size and complexity.
+
+You have a choice of using an on-demand pricing model or a capacity-based pricing model. Both models use slots for data processing. With a capacity-based model, you can pay for dedicated or autoscaled query processing capacity. The capacity-based model gives you explicit control over slots and analytics capacity, whereas the on-demand model does not.
+
+Customers on the capacity-based pricing model explicitly choose how many slots to reserve. Your queries run within that capacity, and you pay for that capacity continuously every second it's deployed. For example, if you purchase 2,000 BigQuery slots, your queries in aggregate are limited to using 2,000 virtual CPUs at any given time. You have this capacity until you delete it, and you pay for 2,000 slots until you delete them.
+
+Projects on the BigQuery on-demand pricing model are subject to per-project slot quota with transient burst capability. Most users on the on-demand model find the default slot capacity more than sufficient. Depending on the workload, access to more slots improves query performance. To check how many slots your account uses, see BigQuery monitoring.
+
 # Dataflow ([link](https://cloud.google.com/dataflow/docs))
 
 Dataflow is a managed service for executing a wide variety of data processing patterns. The documentation on this site shows you how to deploy your batch and streaming data processing pipelines using Dataflow, including directions for using service features.
@@ -707,10 +717,10 @@ An example of the pipeline ([link](https://cloud.google.com/data-fusion/docs/tut
 
 Dataproc is a managed Spark and Hadoop service that lets you take advantage of open source data tools for batch processing, querying, streaming, and machine learning. Dataproc automation helps you create clusters quickly, manage them easily, and save money by turning clusters off when you don't need them. With less time and money spent on administration, you can focus on your jobs and your data.
 
-## Dataproc Workflow Templates ([link](https://cloud.google.com/dataproc/docs/concepts/workflows/workflow-schedule-solutions#dataproc_workflow_templates))
+### Dataproc Workflow Templates ([link](https://cloud.google.com/dataproc/docs/concepts/workflows/workflow-schedule-solutions#dataproc_workflow_templates))
 
 Dataproc Workflow templates provide a flexible and easy-to-use mechanism for managing and executing workflows. A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
 
-## Graceful Decommissioning ([link](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-clusters#graceful_decommissioning))
+### Graceful Decommissioning ([link](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-clusters#graceful_decommissioning))
 
 When you downscale a cluster, work in progress may stop before completion. If you are using Dataproc v 1.2 or later, you can use Graceful Decommissioning, which incorporates Graceful Decommission of YARN Nodes to finish work in progress on a worker before it is removed from the Cloud Dataproc cluster.
