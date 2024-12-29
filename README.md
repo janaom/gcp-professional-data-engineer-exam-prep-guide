@@ -794,3 +794,24 @@ Manual failovers using the default limited-data-loss protection mode only succee
 
 If you are trying to preserve as much data as possible, temporarily stop your application from writing to the Redis instance, and wait to run your manual failover until the bytes pending replication metric is as low as you deem acceptable.
 
+# Dataprep ([link](https://docs.trifacta.com/Dataprep/en/product-overview.html)) 
+
+Dataprep by Trifacta enables you to explore, combine, and transform diverse datasets for downstream analysis.
+
+Within an enterprise, data required for key decisions typically resides in various silos. It comes in different formats featuring different types. It is often inconsistent. It may require refactoring in some form for different audiences. All of this work must be done before you can begin extracting information valuable to the organization. Data preparation (or data wrangling) has been a constant challenge for decades, and that challenge has only amplified as data volumes have exploded.
+
+![uuid-ecb60b4a-391d-fe3d-08db-441dbd2a7af0](https://github.com/user-attachments/assets/5e6ebcd5-0037-405c-9d26-544b111d16f0)
+
+In Dataprep by Trifacta the primary object that you create is the recipe. A recipe is a sequence of transformation steps that you create to transform your source dataset. When you select suggestions, choose options from the handy toolbar, or select values from a data histogram, you begin building new steps in your recipe. After selecting, you can modify them through the Transform Builder, a context panel where your configured transformation can be modified and the changes previewed before saving them.
+
+When you finish your recipe, you run a job to generate results. A job executes your set of recipe steps on the source data, without modifying the source, for delivery to a specified output, which defines location, format, compression and other settings.
+
+Datasets, recipes, and outputs can be grouped together into objects called flows. A flow is a unit of organization in the platform.
+
+Depending on your product, flows can be shared between users, scheduled for automated execution, and exported and imported into the platform. In this manner, you can build and test your recipes, chain together sets of datasets and recipes in a flow, share your work with others, and operationalize your production datasets for automated execution.
+
+# Security ([link]())
+
+# Cloud SQL ([link]())
+
+# Migration ([link]())
