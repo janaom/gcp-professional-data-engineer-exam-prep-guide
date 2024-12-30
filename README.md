@@ -26,7 +26,7 @@
 - [Dataproc](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataproc-link)
 - [Memorystore for Redis](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#memorystore-for-redis-link)
 - [Dataprep]
-- [Security]
+- [Security](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#security)
 - [Cloud SQL](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#migrationtransfer-options)
 - [Migration/transfer options](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#migrationtransfer-options)
 
