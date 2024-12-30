@@ -816,6 +816,64 @@ Depending on your product, flows can be shared between users, scheduled for auto
 
 # Security ([link]())
 
+## Data Loss Prevention (DLP) ([link](https://cloud.google.com/sensitive-data-protection/docs/libraries))
+
+Client libraries make it easier to access Google Cloud APIs from a supported language. Although you can use Google Cloud APIs directly by making raw requests to the server, client libraries provide simplifications that significantly reduce the amount of code you need to write.
+
+Read more about the Cloud Client Libraries and the older Google API Client Libraries in Client libraries explained.
+
+The Cloud Data Loss Prevention API (DLP API) is part of Sensitive Data Protection. Sensitive Data Protection client libraries mentioned on this page are supported on Compute Engine, App Engine - Flexible Environment, Google Kubernetes Engine, and Cloud Run functions. Sensitive Data Protection client library for Java is supported on Java 8 on App Engine standard environment.
+
+If you are using Java 7 on App Engine standard environment, or App Engine - Standard environment with Go, PHP, or Python, use the REST Interface to access Sensitive Data Protection.
+
+## Cloud KMS 
+
+Cloud Key Management Service (Cloud KMS) lets you create and manage cryptographic keys for use in compatible Google Cloud services and in your own applications. Using Cloud KMS, you can do the following:
+
+Generate software or hardware keys, import existing keys into Cloud KMS, or link external keys in your compatible external key management (EKM) system.
+Use customer-managed encryption keys (CMEKs) in Google Cloud products with CMEK integration. CMEK integrations use your Cloud KMS keys to encrypt or "wrap" your data encryption keys (DEKs). Wrapping DEKs with key encryption keys (KEKs) is called envelope encryption.
+Use Cloud KMS Autokey to automate provisioning and assignment. With Autokey, you don't need to provision key rings, keys, and service accounts ahead of time. Instead, they are generated on demand as part of resource creation.
+Use Cloud KMS keys for encryption and decryption operations. For example, you can use the Cloud KMS API or client libraries to use your Cloud KMS keys for client-side encryption.
+Use Cloud KMS keys to create or verify digital signatures or message authentication code (MAC) signatures.
+
+### Google-owned and Google-managed encryption keys (Google Cloud default encryption)
+
+By default, data at rest in Google Cloud is protected by keys in Keystore, Google Cloud's internal key management service. Keys in Keystore are managed automatically by Google Cloud, with no configuration required on your part. Most services automatically rotate keys for you. Keystore supports a primary key version and a limited number of older key versions. The primary key version is used to encrypt new data encryption keys. Older key versions can still be used to decrypt existing data encryption keys. You can't view or manage these keys or review key usage logs. Data from multiple customers might use the same key encryption key.
+
+This default encryption uses cryptographic modules that are validated to be FIPS 140-2 Level 1 compliant.
+
+### Customer-managed encryption keys (CMEKs) ([link](https://cloud.google.com/kms/docs/key-management-service))
+
+Cloud KMS keys that are used to protect your resources in CMEK-integrated services are customer-managed encryption keys (CMEKs). You can own and control CMEKs, while delegating key creation and assignment tasks to Cloud KMS Autokey. To learn more about automating provisioning for CMEKs, see Cloud Key Management Service with Autokey.
+
+You can use your Cloud KMS keys in compatible services to help you meet the following goals:
+
+    Own your encryption keys.
+    
+    Control and manage your encryption keys, including choice of location, protection level, creation, access control, rotation, use, and destruction.
+    
+    Selectively delete data protected by your keys in the case of off-boarding or to remediate security events (crypto-shredding).
+    
+    Create dedicated, single-tenant keys that establish a cryptographic boundary around your data.
+    
+    Log administrative and data access to encryption keys.
+    
+    Meet current or future regulation that requires any of these goals.
+
+When you use Cloud KMS keys with CMEK-integrated services, you can use organization policies to ensure that CMEKs are used as specified in the policies. For example, you can set an organization policy that ensures that your compatible Google Cloud resources use your Cloud KMS keys for encryption. Organization policies can also specify which project the key resources must reside in.
+
+The features and level of protection provided depend on the protection level of the key:
+
+- Software keys - You can generate software keys in Cloud KMS and use them in all Google Cloud locations. You can create symmetric keys with automatic rotation or asymmetric keys with manual rotation. Customer-managed software keys use FIPS 140-2 Level 1 validated software cryptography modules. You also have control over the rotation period, Identity and Access Management (IAM) roles and permissions, and organization policies that govern your keys. You can use your software keys with many compatible Google Cloud resources.
+
+- Imported software keys - You can import software keys that you created elsewhere for use in Cloud KMS. You can import new key versions to manually rotate imported keys. You can use IAM roles and permissions and organization policies to govern usage of your imported keys.
+
+- Hardware keys and Cloud HSM - You can generate hardware keys in a cluster of FIPS 140-2 Level 3 Hardware Security Modules (HSMs). You have control over the rotation period, IAM roles and permissions, and organization policies that govern your keys. When you create HSM keys using Cloud HSM, Google Cloud manages the HSM clusters so you don't have to. You can use your HSM keys with many compatible Google Cloud resources—the same services that support software keys. For the highest level of security compliance, use hardware keys.
+
+- External keys and Cloud EKM - You can use keys that reside in an external key manager (EKM). Cloud EKM lets you use keys held in a supported key manager to secure your Google Cloud resources. You connect to your EKM over a Virtual Private Cloud (VPC). Some Google Cloud services that support Cloud KMS keys don't support Cloud EKM keys.
+
+To learn more about which Cloud KMS locations support which protection levels, see Cloud KMS locations.
+
 # Cloud SQL ([link]())
 
 # Migration ([link]())
