@@ -25,6 +25,9 @@
 - [Data Fusion](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#data-fusion-link)
 - [Dataproc](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#dataproc-link)
 - [Memorystore for Redis](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#memorystore-for-redis-link)
+- [Dataprep]
+- [Security]
+- [Migration/transfer options]
 
 ------------------------------
 
@@ -814,7 +817,7 @@ Datasets, recipes, and outputs can be grouped together into objects called flows
 
 Depending on your product, flows can be shared between users, scheduled for automated execution, and exported and imported into the platform. In this manner, you can build and test your recipes, chain together sets of datasets and recipes in a flow, share your work with others, and operationalize your production datasets for automated execution.
 
-# Security ([link]())
+# Security 
 
 ## Data Loss Prevention (DLP) ([link](https://cloud.google.com/sensitive-data-protection/docs/libraries))
 
@@ -826,15 +829,15 @@ The Cloud Data Loss Prevention API (DLP API) is part of Sensitive Data Protectio
 
 If you are using Java 7 on App Engine standard environment, or App Engine - Standard environment with Go, PHP, or Python, use the REST Interface to access Sensitive Data Protection.
 
-## Cloud KMS 
+## Cloud KMS ([link](https://cloud.google.com/kms/docs/key-management-service))
 
 Cloud Key Management Service (Cloud KMS) lets you create and manage cryptographic keys for use in compatible Google Cloud services and in your own applications. Using Cloud KMS, you can do the following:
 
-Generate software or hardware keys, import existing keys into Cloud KMS, or link external keys in your compatible external key management (EKM) system.
-Use customer-managed encryption keys (CMEKs) in Google Cloud products with CMEK integration. CMEK integrations use your Cloud KMS keys to encrypt or "wrap" your data encryption keys (DEKs). Wrapping DEKs with key encryption keys (KEKs) is called envelope encryption.
-Use Cloud KMS Autokey to automate provisioning and assignment. With Autokey, you don't need to provision key rings, keys, and service accounts ahead of time. Instead, they are generated on demand as part of resource creation.
-Use Cloud KMS keys for encryption and decryption operations. For example, you can use the Cloud KMS API or client libraries to use your Cloud KMS keys for client-side encryption.
-Use Cloud KMS keys to create or verify digital signatures or message authentication code (MAC) signatures.
+    Generate software or hardware keys, import existing keys into Cloud KMS, or link external keys in your compatible external key management (EKM) system.
+    Use customer-managed encryption keys (CMEKs) in Google Cloud products with CMEK integration. CMEK integrations use your Cloud KMS keys to encrypt or "wrap" your data encryption keys (DEKs). Wrapping DEKs with key encryption keys (KEKs) is called envelope encryption.
+    Use Cloud KMS Autokey to automate provisioning and assignment. With Autokey, you don't need to provision key rings, keys, and service accounts ahead of time. Instead, they are generated on demand as part of resource creation.
+    Use Cloud KMS keys for encryption and decryption operations. For example, you can use the Cloud KMS API or client libraries to use your Cloud KMS keys for client-side encryption.
+    Use Cloud KMS keys to create or verify digital signatures or message authentication code (MAC) signatures.
 
 ### Google-owned and Google-managed encryption keys (Google Cloud default encryption)
 
@@ -874,6 +877,63 @@ The features and level of protection provided depend on the protection level of 
 
 To learn more about which Cloud KMS locations support which protection levels, see Cloud KMS locations.
 
-# Cloud SQL ([link]())
+# Cloud SQL ([link](https://cloud.google.com/sql/docs/introduction))
 
-# Migration ([link]())
+Cloud SQL is a fully managed relational database service for MySQL, PostgreSQL, and SQL Server. This frees you from database administration tasks so that you have more time to manage your data.
+
+This page discusses basic concepts and terminology for Cloud SQL, which provides SQL data storage for Google Cloud. For a more in-depth explanation of key concepts, see the key terms and features pages. For information about how Cloud SQL databases compare with one another, see Cloud SQL feature support by database engine.
+
+### Connect to a Cloud SQL managed database
+
+Connecting to a Cloud SQL managed database is similar to connecting to a self-managed database. Depending on how you configure it, your Cloud SQL instance has a public IP address (which can be accessed from outside of Google Cloud, using the internet), or a private IP address (which can only be accessed through a Virtual Private Cloud (VPC) network). In addition, Cloud SQL provides different authorization options to control who is allowed to connect to your instance, such as the Cloud SQL Auth Proxy.
+
+### About replication in Cloud SQL ([link](https://cloud.google.com/sql/docs/mysql/replication))
+
+Cloud SQL supports the following types of replicas:
+
+    Read replicas
+    Cross-region read replicas
+    Cascading read replicas
+    External read replicas
+    Cloud SQL replicas, when replicating from an external server
+
+# Migration/transfer options 
+
+## Transfer Appliance ([link](https://cloud.google.com/transfer-appliance/docs/4.0/overview))
+
+Transfer Appliance is a high-capacity storage device that enables you to transfer and securely ship your data to a Google upload facility, where we upload your data to Cloud Storage. For Transfer Appliance capacities and requirements, refer to the Specifications page.
+
+With a typical network bandwidth of 100 Mbps, 300 terabytes of data takes about 9 months to upload. However, with Transfer Appliance, you can receive the appliance and capture 300 terabytes of data in under 25 days. Your data can be accessed in Cloud Storage within another 25 days, all without consuming any outbound network bandwidth.
+
+## Storage Transfer Service ([link](https://cloud.google.com/storage-transfer/docs/overview))
+
+Storage Transfer Service enables seamless data movement across object and file storage systems, including:
+
+    Amazon S3, Azure Blob Storage, or Cloud Storage to Cloud Storage
+    On-premises storage to Cloud Storage, or Cloud Storage to on-premises
+    Between on-premises storage systems
+    From publicly-accessible URLs to Cloud Storage
+    From HDFS to Cloud Storage
+    Storage Transfer Service is optimized for transfers involving more than 1TiB of data. For smaller transfers, see our recommendations.
+
+With Storage Transfer Service, you can:
+
+    Automate data transfers: Eliminate the need for manual processes and custom scripts.
+    Transfer data at scale: Move petabytes of data quickly and reliably.
+    Optimize network performance: Choose between Google-managed transfers for simplicity or self-hosted agents for granular control over network routing and bandwidth consumption.
+    Support diverse storage systems: Transfer data seamlessly between cloud providers and on-premises environments.
+
+## BigQuery Data Transfer Service ([link](https://cloud.google.com/bigquery/docs/dts-introduction))
+
+The BigQuery Data Transfer Service automates data movement into BigQuery on a scheduled, managed basis. Your analytics team can lay the foundation for a BigQuery data warehouse without writing a single line of code.
+
+You can access the BigQuery Data Transfer Service using the:
+
+    Google Cloud console
+    bq command-line tool
+    BigQuery Data Transfer Service API
+    
+After you configure a data transfer, the BigQuery Data Transfer Service automatically loads data into BigQuery on a regular basis. You can also initiate data backfills to recover from any outages or gaps. You cannot use the BigQuery Data Transfer Service to transfer data out of BigQuery.
+
+In addition to loading data into BigQuery, BigQuery Data Transfer Service is used for two BigQuery operations: dataset copies and scheduled queries.
+
