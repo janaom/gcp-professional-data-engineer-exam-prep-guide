@@ -27,7 +27,7 @@
 - [Memorystore for Redis](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#memorystore-for-redis-link)
 - [Dataprep]
 - [Security]
-- [Migration/transfer options]
+- [Migration/transfer options](https://github.com/janaom/gcp-professional-data-engineer-exam-prep-guide/blob/main/README.md#migrationtransfer-options)
 
 ------------------------------
 
