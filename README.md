@@ -276,8 +276,8 @@ The query that defines the view is run each time the view is queried. If you fre
 
 BigQuery views are commonly used to:
 
-    Abstract and store calculation and join logic in a common object to simplify query use
-    Provide access to a subset of data and calculation logic without accessing to the base tables
+    - Abstract and store calculation and join logic in a common object to simplify query use
+    - Provide access to a subset of data and calculation logic without accessing to the base tables
 
 You can also use a view as a data source for a visualization tool such as Looker Studio.
 
@@ -286,8 +286,6 @@ You can also use a view as a data source for a visualization tool such as Looker
 Views are virtual and provide a reusable reference to a set of data, but do not physically store any data. Materialized views are defined using SQL, like a regular view, but physically store the data which BigQuery uses to improve performance. For further comparison, see materialized views features.
 
 ## Introduction to materialized views ([link](https://cloud.google.com/bigquery/docs/materialized-views-intro))
-
-This document provides an overview of BigQuery support for materialized views. Before you read this document, familiarize yourself with BigQuery and BigQuery's logical views.
 
 In BigQuery, materialized views are precomputed views that periodically cache the results of a query for increased performance and efficiency. BigQuery leverages precomputed results from materialized views and whenever possible reads only changes from the base tables to compute up-to-date results. Materialized views can be queried directly or can be used by the BigQuery optimizer to process queries to the base tables.
 
@@ -324,7 +322,7 @@ External tables are stored outside out of BigQuery storage and refer to data tha
 
 ## Introduction to BigLake external tables ([link](https://cloud.google.com/bigquery/docs/biglake-intro))
 
-This document provides an overview of BigLake and assumes familiarity with database tables and Identity and Access Management (IAM). To query data stored in the supported data stores, you must first create BigLake tables and then query them using GoogleSQL syntax:
+To query data stored in the supported data stores, you must first create BigLake tables and then query them using GoogleSQL syntax:
 
     Create Cloud Storage BigLake tables and then query.
     Create Amazon S3 BigLake tables and then query.
