@@ -525,6 +525,10 @@ Instead, use a pattern called a dead-letter queue (unprocessed messages queue). 
 
 Use Cloud Monitoring to apply different monitoring and alerting policies for your pipeline's dead-letter queue. For example, you can visualize the number and size of elements processed by your dead-letter transform and configure alerting to trigger if certain threshold conditions are met.
 
+## Configure internet access and firewall rules ([link](https://cloud.google.com/dataflow/docs/guides/routes-firewall))
+
+Firewall rules let you allow or deny traffic to and from your VMs. If your Dataflow jobs use Dataflow Shuffle or Streaming Engine, then you only need to ensure that firewal rules allow access to Google Cloud APIs. Otherwise, you must configure additional firewalls rules so that Dataflow VMs can send and receive network traffic on TCP port 12345 for streaming jobs and on TCP port 12346 for batch jobs. A project owner, editor, or security administrator must create necessary firewall rules in the VPC network used by your Dataflow VMs.
+
 # Dataplex ([link](https://cloud.google.com/dataplex/docs/introduction))
 
 Dataplex is a data fabric that unifies distributed data and automates data management and governance for that data.
