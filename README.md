@@ -1,4 +1,4 @@
-# Google Cloud Professional Data Engineer: Exam Prep Guide
+# Google Cloud Professional Data Engineer Certification: Exam Prep Guide
 
 - All info about the Google Cloud Professional Data Engineer certification can be found [here](https://cloud.google.com/learn/certification/data-engineer).
 
