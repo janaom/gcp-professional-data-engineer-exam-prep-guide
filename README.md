@@ -45,7 +45,7 @@ You can select from the following location types ([link](https://cloud.google.co
 
     A multi-region is a large geographic area, such as the United States, that contains two or more geographic places.
 
-![image](https://github.com/user-attachments/assets/849c4723-d333-4eeb-973e-821e60aa09d5)
+<img width="600" alt="Screenshot (638)" src="https://github.com/user-attachments/assets/3ef3be3d-da03-4930-abba-4868e2f95685" />
 
 ## Autoclass ([link](https://cloud.google.com/storage/docs/autoclass))
 
